@@ -50,3 +50,4 @@ function timViTriNhanVien(taiKhoan) {
   });
   return viTri;
 }
+[];

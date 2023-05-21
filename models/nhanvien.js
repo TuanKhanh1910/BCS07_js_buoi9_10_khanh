@@ -29,6 +29,12 @@ function nhanVien(
     return tongLuongNhanVien;
   };
 
+  // nhân
+  // nhaanvien.trim()
+  // Nhân vien == nhân viên
+  // nhanvien
+  // nhanvientrungbinh
+
   this.xepLoaiNhanVien = function () {
     if (this.gioLam < 160) {
       return "Nhân viên trung bình";

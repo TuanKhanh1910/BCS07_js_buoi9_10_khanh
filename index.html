@@ -161,14 +161,16 @@
                       type="text"
                       class="form-control"
                       placeholder="Loại nhân viên"
+                      onchange="thanhTichNhanVien()"
                       id="searchName"
                     />
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="btnTimNV"
+                    <div id="btnTimNV" class="input-group-prepend">
+                      <span class="input-group-text"
                         ><i class="fa fa-search"></i
                       ></span>
                     </div>
                   </div>
+                  <div class="alert alert-primary my-3" id="ketQua"></div>
                 </div>
               </div>
               <table class="table table-bordered table-hover myTable">

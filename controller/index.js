@@ -1,6 +1,6 @@
 var arrNhanVien = [];
 
-function rederGiaoDien() {
+function rederGiaoDien(arryNhanVien) {
   var content = "";
   for (var i = 0; i < arrNhanVien.length; i++) {
     var thongTinNhanVien = arrNhanVien[i];
@@ -37,7 +37,7 @@ document.getElementById("btnThemNV").onclick = function () {
   var thongTinNhanVien = layGiaTriInput();
   arrNhanVien.push(thongTinNhanVien);
 
-  rederGiaoDien();
+  rederGiaoDien(arrNhanVien);
 
   ganGiaTriChoInput("", "", "", "", "", "", "", "");
 };
@@ -46,7 +46,7 @@ function xoaNhanVien(taiKhoan) {
   var index = timViTriNhanVien(taiKhoan);
   if (index != -1) {
     arrNhanVien.splice(index, 1);
-    rederGiaoDien();
+    rederGiaoDien(arrNhanVien);
   }
 }
 
@@ -70,19 +70,57 @@ function capNhatThongTinNhanVien() {
   var thongTinNhanVienDaChinhSua = layGiaTriInput();
   var index = timViTriNhanVien(thongTinNhanVienDaChinhSua.taiKhoan);
   arrNhanVien[index] = thongTinNhanVienDaChinhSua;
-  rederGiaoDien();
+  rederGiaoDien(arrNhanVien);
 }
 document.getElementById("btnCapNhat").onclick = capNhatThongTinNhanVien;
 
-// function thanhTichNhanVien () {
-//     var timNhanVien = document.getElementById("searchName").value;
+// function rederGiaoDienXepLoaiNhanVien() {
+//   var content = "";
+//   for (var i = 0; i < arrtimKiemNhanVien.length; i++) {
+//     var thongTinNhanVien = arrtimKiemNhanVien[i];
+//     var tongLuongNhanVien = thongTinNhanVien.tongLuong();
+//     var xepLoai = thongTinNhanVien.xepLoaiNhanVien();
+//     content += `<tr>
+//     <td>${thongTinNhanVien.taiKhoan}</td>
+//     <td>${thongTinNhanVien.hoTen}</td>
+//     <td>${thongTinNhanVien.email}</td>
+//     <td>${thongTinNhanVien.ngayLam}</td>
+//     <td>${thongTinNhanVien.chucVu}</td>
+//     <td>${tongLuongNhanVien.toLocaleString()}</td>
+//     <td>${xepLoai}</td>
+//     <td>
+//         <button onclick="xoaNhanVien('${
+//           thongTinNhanVien.taiKhoan
+//         }')" class="btn btn-danger">
+//         <i class="fa-solid fa-trash"></i>
+//         </button>
 
-//     for(var i = 0; i < arrNhanVien.length; i++) {
-//         var ketQua = "";
-//         if (timNhanVien == "nhân viên xuất sắc") {
-//             ketQua +=
-//         }
-//     }
-
+//         <button data-toggle="modal"
+//         data-target="#myModal" onclick="editNhanVien('${
+//           thongTinNhanVien.taiKhoan
+//         }')" class="btn btn-warning">
+//         <i class="fa-solid fa-pen"></i>
+//         </button>
+//         </td>
+//   </tr>`;
+//   }
+//   document.getElementById("tableDanhSach").innerHTML = content;
 // }
-// document.getElementById("btnTimNV").onclick = thanhTichNhanVien
+
+function thanhTichNhanVien() {
+  arrtimKiemNhanVien = [];
+  var nhanvienInput = document.getElementById("searchName").value;
+  console.log(nhanvienInput);
+  for (var i = 0; i < arrNhanVien.length; i++) {
+    // tìm hiểu về includes trong tìm kiếm
+    // tìm hiểu về lowercase và .trim()
+    if (arrNhanVien[i].xepLoaiNhanVien() == nhanvienInput) {
+      arrtimKiemNhanVien.push(arrNhanVien[i].hoTen);
+    }
+  }
+  rederGiaoDien(arrtimKiemNhanVien);
+  document.getElementById("ketQua").innerHTML =
+    "Kết quả tìm kiếm: " + arrtimKiemNhanVien;
+  // console.log(arrtimKiemNhanVien);
+}
+document.getElementById("searchName").onchange = thanhTichNhanVien;
