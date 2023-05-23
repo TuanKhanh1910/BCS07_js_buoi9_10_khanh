@@ -25,6 +25,8 @@ function nhanVien(
       tongLuongNhanVien = this.luongCoBan * 2;
     } else if (this.chucVu == "Nhân viên") {
       tongLuongNhanVien = this.luongCoBan * 1;
+    } else if (this.chucVu == "") {
+      tongLuongNhanVien = "Vui lòng chọn chức vụ";
     }
     return tongLuongNhanVien;
   };

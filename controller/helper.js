@@ -1,5 +1,6 @@
 function layGiaTriInput() {
   var taiKhoan = document.getElementById("tknv").value;
+  // kiemTraRong(taiKhoan, "tbTKNV");
   var hoTen = document.getElementById("name").value;
   var email = document.getElementById("email").value;
   var matKhau = document.getElementById("password").value;
@@ -7,6 +8,28 @@ function layGiaTriInput() {
   var luongCoBan = +document.getElementById("luongCB").value;
   var chucVu = document.getElementById("chucvu").value;
   var gioLam = +document.getElementById("gioLam").value;
+
+  var valid = true;
+  valid =
+    kiemTraRong(taiKhoan, "tbTKNV") &
+    kiemTraRong(hoTen, "tbTen") &
+    kiemTraRong(email, "tbEmail") &
+    kiemTraRong(matKhau, "tbMatKhau") &
+    kiemTraRong(ngayLam, "tbNgay") &
+    kiemTraRong(luongCoBan, "tbLuongCB") &
+    kiemTraRong(chucVu, "tbChucVu") &
+    kiemTraRong(gioLam, "tbGiolam") &
+    kiemTraTaiKhoan(taiKhoan, "tbTKNV") &
+    kiemTraEmail(email, "tbEmail") &
+    kiemTraSoGioLam(gioLam, "tbGiolam") &
+    kiemTraTen(hoTen, "tbTen") &
+    checkPass(matKhau, "tbMatKhau") &
+    kiemTraLuong(luongCoBan, "tbLuongCB");
+  console.log(!valid);
+  if (!valid) {
+    console.log("first");
+    return;
+  }
 
   var thongTinNhanVien = new nhanVien(
     taiKhoan,
@@ -18,6 +41,7 @@ function layGiaTriInput() {
     chucVu,
     gioLam
   );
+  console.log(thongTinNhanVien);
   return thongTinNhanVien;
 }
 
