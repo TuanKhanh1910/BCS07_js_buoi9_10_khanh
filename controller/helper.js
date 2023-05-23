@@ -75,3 +75,16 @@ function timViTriNhanVien(taiKhoan) {
   return viTri;
 }
 [];
+
+// hàm lưu dữ liệu xuống local
+function saveStorage(arrNhanVien) {
+  localStorage.setItem("arrNhanVien", JSON.stringify(arrNhanVien));
+}
+
+// hàm lấy những dữ liệu từ local lên
+function getStorage() {
+  var arrNhanVienLocal = JSON.parse(localStorage.getItem("arrNhanVien"));
+  if (arrNhanVienLocal != null) {
+    arrNhanVien = arrNhanVienLocal;
+  }
+}

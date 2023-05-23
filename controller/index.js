@@ -1,9 +1,15 @@
 var arrNhanVien = [];
 
+getStorage();
+
+rederGiaoDien();
+
 function rederGiaoDien() {
   var content = "";
   for (var i = 0; i < arrNhanVien.length; i++) {
-    var thongTinNhanVien = arrNhanVien[i];
+    var thongTinNhanVien = new nhanVien();
+    var nhanVienItem = arrNhanVien[i];
+    Object.assign(thongTinNhanVien, nhanVienItem);
     var tongLuongNhanVien = thongTinNhanVien.tongLuong();
     var xepLoai = thongTinNhanVien.xepLoaiNhanVien();
     content += `<tr>
@@ -39,6 +45,8 @@ document.getElementById("btnThemNV").onclick = function () {
   if (thongTinNhanVien) {
     arrNhanVien.push(thongTinNhanVien);
 
+    saveStorage(arrNhanVien);
+
     rederGiaoDien();
 
     ganGiaTriChoInput("", "", "", "", "", "", "", "");
@@ -49,6 +57,7 @@ function xoaNhanVien(taiKhoan) {
   var index = timViTriNhanVien(taiKhoan);
   if (index != -1) {
     arrNhanVien.splice(index, 1);
+    saveStorage(arrNhanVien);
     rederGiaoDien();
   }
 }
@@ -73,6 +82,7 @@ function capNhatThongTinNhanVien() {
   var thongTinNhanVienDaChinhSua = layGiaTriInput();
   var index = timViTriNhanVien(thongTinNhanVienDaChinhSua.taiKhoan);
   arrNhanVien[index] = thongTinNhanVienDaChinhSua;
+  saveStorage(arrNhanVien);
   rederGiaoDien();
 }
 document.getElementById("btnCapNhat").onclick = capNhatThongTinNhanVien;
@@ -121,6 +131,7 @@ function thanhTichNhanVien() {
       arrtimKiemNhanVien.push(arrNhanVien[i].hoTen);
     }
   }
+  saveStorage(arrNhanVien);
   rederGiaoDien();
   document.getElementById("ketQua").innerHTML =
     "Kết quả tìm kiếm: " + arrtimKiemNhanVien;
