@@ -10,6 +10,21 @@ function layGiaTriInput() {
   var gioLam = +document.getElementById("gioLam").value;
 
   var valid = true;
+  // valid =
+  //   kiemTraRong(taiKhoan, "tbTKNV") &
+  //   kiemTraRong(hoTen, "tbTen") &
+  //   kiemTraRong(email, "tbEmail") &
+  //   kiemTraRong(matKhau, "tbMatKhau") &
+  //   kiemTraRong(ngayLam, "tbNgay") &
+  //   kiemTraRong(luongCoBan, "tbLuongCB") &
+  //   kiemTraRong(chucVu, "tbChucVu") &
+  //   kiemTraRong(gioLam, "tbGiolam");
+  // valid &&= kiemTraTaiKhoan(taiKhoan, "tbTKNV");
+  // valid &&= kiemTraEmail(email, "tbEmail");
+  // valid &&= kiemTraSoGioLam(gioLam, "tbGiolam");
+  // valid &&= kiemTraTen(hoTen, "tbTen");
+  // valid &&= checkPass(matKhau, "tbMatKhau");
+  // valid &&= kiemTraLuong(luongCoBan, "tbLuongCB");
   valid =
     kiemTraRong(taiKhoan, "tbTKNV") &
     kiemTraRong(hoTen, "tbTen") &
@@ -18,13 +33,39 @@ function layGiaTriInput() {
     kiemTraRong(ngayLam, "tbNgay") &
     kiemTraRong(luongCoBan, "tbLuongCB") &
     kiemTraRong(chucVu, "tbChucVu") &
-    kiemTraRong(gioLam, "tbGiolam") &
+    kiemTraRong(gioLam, "tbGiolam");
+
+  valid &&=
     kiemTraTaiKhoan(taiKhoan, "tbTKNV") &
     kiemTraEmail(email, "tbEmail") &
     kiemTraSoGioLam(gioLam, "tbGiolam") &
     kiemTraTen(hoTen, "tbTen") &
     checkPass(matKhau, "tbMatKhau") &
     kiemTraLuong(luongCoBan, "tbLuongCB");
+
+  valid &&=
+    kiemTraEmail(email, "tbEmail") &
+    kiemTraSoGioLam(gioLam, "tbGiolam") &
+    kiemTraTen(hoTen, "tbTen") &
+    checkPass(matKhau, "tbMatKhau") &
+    kiemTraLuong(luongCoBan, "tbLuongCB");
+
+  valid &&=
+    kiemTraSoGioLam(gioLam, "tbGiolam") &
+    kiemTraTen(hoTen, "tbTen") &
+    checkPass(matKhau, "tbMatKhau") &
+    kiemTraLuong(luongCoBan, "tbLuongCB");
+
+  valid &&=
+    kiemTraTen(hoTen, "tbTen") &
+    checkPass(matKhau, "tbMatKhau") &
+    kiemTraLuong(luongCoBan, "tbLuongCB");
+
+  valid &&=
+    checkPass(matKhau, "tbMatKhau") & kiemTraLuong(luongCoBan, "tbLuongCB");
+
+  valid &&= kiemTraLuong(luongCoBan, "tbLuongCB");
+
   console.log(!valid);
   if (!valid) {
     console.log("first");

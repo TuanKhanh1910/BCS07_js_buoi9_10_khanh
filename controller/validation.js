@@ -12,7 +12,12 @@ function kiemTraRong(checkInput, idThongBao) {
 }
 
 function kiemTraTaiKhoan(checkInput, idThongBao) {
-  if (checkInput.length >= 4 && checkInput.length <= 6) {
+  console.log(checkInput);
+  if (
+    checkInput.length >= 4 &&
+    checkInput.length <= 6 &&
+    checkInput.length !== ""
+  ) {
     document.getElementById(idThongBao).style.display = "none";
     document.getElementById(idThongBao).innerHTML = "";
     return true;
